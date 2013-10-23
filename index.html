@@ -6,29 +6,49 @@
 <meta name="viewport" content="width=device-width">
 <title>Parrot and Cockatiel Pinecone Treat</title>
 
-<!-- jQuery & jQueryUI are combined into this with CodeKit -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    
+    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="js/buy-controller-ck.js"></script>
     <script type="text/javascript" src="js/a.js"></script>
 
 	<script type="text/javascript">
 		Stripe.setPublishableKey('pk_QfM9YS3EKrJzbgqSlMhBq92PETf9c'); 	 // LIVE
-		//Stripe.setPublishableKey('pk_pb5hanGiaAGFOtgoiNWKZQJm1fUOp');    // TESTING
 	</script>
 
+	<script type="text/javascript" src="js/script.js"></script>
     
     <link rel="stylesheet" type="text/css" href="css/content.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">    				    
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script type="text/javascript" src="js/script.js"></script>
+        
+        
         <!--[if lt IE 9]>
         <link rel="stylesheet" type="text/css" href="css/ie.css"/>
         <script type="text/javascript" src="js/PIE.js"></script>
         <script type="text/javascript" src="js/script_ie.js"></script>
         <![endif]-->
-			
+        
+        
+        
+    <script type="text/javascript">
+                
+        $(document).ready(function(){
+                          
+                          alert('x');
+                          
+            $('#cc-full-name').change(function () {
+                $('#ship-full-name').val($(this).val());
+            });
+        });
+        
+    </script>
+        
+        
+    
+        
 </head>
 
 <body class="VDKRibbons" id="buy">
@@ -73,8 +93,8 @@
 					
 					<div class="pull-left leftbag">
 						<div class="birddiv">
-							<img id="birdcone-img" src="img/BirdCone.png" >	
-						<!--	<a id="buy-questions-link" class="vdkbutton blue" onclick="$('#faq').scrollTo();">Questions? Click here.</a>	-->					
+							<img id="birdcone-img" src="img/BirdCone.png" >
+							<a id="buy-questions-link" class="vdkbutton blue" onclick="$('#faq').scrollTo();">Questions about ingredients? Click here.</a>
 						</div> 
 					</div>
 		
@@ -92,22 +112,92 @@
 								
 								<!-- BEGIN FORM *********************************************************************************** -->
 								<div id="buy-stage-1-wrapper" class="">
-										<form id="buy-form" method="post" action="javascript:">					
+										<form id="buy-form" method="post" action="javascript:">
+                                            
+                                            <p class="label">Order Information</p>
+                                            <p>This info is encrypted and sent directly to <a href="http://stripe.com/" target="_blank">Stripe's</a> servers to bill your card. I do not store it or even read it on my own server.</p>
+
+                                            
+                                            <ul class="form-ul leveling">
+                                                <li class="flabel">Price</li>
+                                                <li id="price-li">
+                                                    <input class="radio" name="price" value="28" checked="checked" type="radio"> $28
+                                                        <input class="radio" name="price" value="30" type="radio"> $30
+                                                            <input class="radio" name="price" value="34" type="radio"> $34
+                                                                <input class="radio" name="price" value="36" type="radio"> $36
+                                                                    </li>
+                                            </ul>
+                                            
+                                            <div class="fullClear"></div>
+                                            <div id="price-explanation">
+                                                <!-- <canvas id="triangle-canvas" class="hidde" width="70" height="110"></canvas> -->
+                                                <img src="img/up-arrow.png" class="arrow-up hid" alt="" /> 
+                                                <h2>How long does a BirdCone last?</h2>
+                                                <p>Of course this depends on your bird, but typically a BirdCone will last between 2-3 weeks for a cockatiel and 1-2 weeks for an averaged size parrot.</p> <p>Even after the seed is eaten, your bird will still enjoy the pinecone itself.</p>
+                                                
+                                            </div>
+                                            <div class="fullClear"></div>
+                                            
+                                            <ul class="form-ul">
+                                                <li class="flabel input-xlarge">Name on card</li>
+                                                <li><input class="text" id="cc-full-name" name="Your Name" spellcheck="false"></li>
+                                            </ul>
+
+                                            
+                                            <ul class="form-ul" id="card-select">
+                                             
+                                            <li class="flabel">Credit card</li>
+                                                <li><select id="card-type">
+                                                    <option selected="selected" value="visa">Visa</option>
+                                                    <option value="mastercard">Mastercard</option>
+                                                    <option value="discover">Discover</option>
+                                                    <option value="amex">American Express</option>
+                                                </select>
+                                                </li>
+                                            </ul>
+                                           <ul class="form-ul">
+                                                <li class="flabel">Card number</li>
+                                                <li><input class="text" id="card-number" autocomplete="off"></li>
+                                            </ul>
+                                            
+                                            <ul class="form-ul last" id="expiration-select">
+                                                <li class="flabel">Expiration date</li>
+                                                <li><select id="expiration-month">
+                                                    <option selected="selected" value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+                                                    
+                                                    <select id="expiration-year">								
+                                                        <option value="2013" selected="selected">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option><option value="2033">2033</option>
+                                                    </select>
+                                                </li>
+                                            </ul>
+                                            
+                                            <ul class="form-ul last">
+                                                <li class="flabel">CVC</li>
+                                                <li><input class="text" id="card-security-code" autocomplete="off">
+                                                    </li>
+                                            </ul>						
+                                           
 										
 										<p class="label">Shipping Information</p>
 										<p>Your BirdCones will be shipped using standard UPS ground delivery. If you wish to use a different shipping method, please email us at info@birdcone.com</p>
 										
 										<ul class="form-ul">
-											<li class="flabel input-xlarge">Name</li>
-											<li><input class="text" id="first-name" name="Your Name" spellcheck="false"></li>
+											<li class="flabel input-xlarge">Name for delivery</li>
+											<li><input class="text" id="ship-full-name" name="Your Name" spellcheck="false"></li>
 										</ul>
 										
-										<!--
-										<ul class="form-ul last">
-										<li class="flabel">Last name</li>
-										<li><input class="text" id="last-name" name="lastName" spellcheck="false"></li>
-										</ul>
-										-->
 										
 										<ul class="form-ul input-xlarge level">
 										<li class="flabel">Street address</li>
@@ -186,72 +276,6 @@
 										<li><input class="text" id="email" name="email" spellcheck="false"></li>
 										</ul>
 										
-										<p class="label">Payment Information</p>
-										<p>This info is encrypted and sent directly to <a href="http://stripe.com/" target="_blank">Stripe's</a> servers to bill your card. I do not store it or even read it on my own server.</p>
-										
-										<ul class="form-ul leveling">
-										<li class="flabel">Price</li>
-										<li id="price-li">
-										<input class="radio" name="price" value="28" checked="checked" type="radio"> $28
-										<input class="radio" name="price" value="30" type="radio"> $30
-										<input class="radio" name="price" value="34" type="radio"> $34
-										<input class="radio" name="price" value="36" type="radio"> $36
-										</li>
-										</ul>
-										<div class="fullClear"></div>
-										<div id="price-explanation">
-											<canvas id="triangle-canvas" class="hidde" width="70" height="110"></canvas>
-											<img src="img/up-arrow.png" class="arrow-up hid" alt="" />
-											<h2>How long does a BirdCone last?</h2>
-											<p>Of course this depends on your bird, but typically a BirdCone will last between 2-3 weeks for a cockatiel and 1-2 weeks for an averaged size parrot.</p> <p>Even after the seed is eaten, your bird will still enjoy the pinecone itself.</p>
-										
-										</div>
-										<div class="fullClear"></div>
-										
-										<ul class="form-ul" id="card-select">
-											<li class="flabel">Credit card</li>
-											<li><select id="card-type">
-											<option selected="selected" value="visa">Visa</option>
-											<option value="mastercard">Mastercard</option>
-											<option value="discover">Discover</option>
-											<option value="amex">American Express</option>
-											</select>
-											</li>
-										</ul>
-										
-										<ul class="form-ul">
-											<li class="flabel">Card number</li>
-											<li><input class="text" id="card-number" autocomplete="off"></li>
-										</ul>
-										
-										<ul class="form-ul last" id="expiration-select">
-											<li class="flabel">Expiration date</li>
-											<li><select id="expiration-month">
-											<option selected="selected" value="1">January</option>
-											<option value="2">February</option>
-											<option value="3">March</option>
-											<option value="4">April</option>
-											<option value="5">May</option>
-											<option value="6">June</option>
-											<option value="7">July</option>
-											<option value="8">August</option>
-											<option value="9">September</option>
-											<option value="10">October</option>
-											<option value="11">November</option>
-											<option value="12">December</option>
-											</select>
-											
-											<select id="expiration-year">								
-												<option value="2013" selected="selected">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option><option value="2033">2033</option>
-											</select>
-											</li>
-										</ul>
-										
-										<ul class="form-ul last">
-											<li class="flabel">CVC</li>
-											<li><input class="text" id="card-security-code" autocomplete="off">
-											</li>
-										</ul>						
 										
 										
 										<p class="label">Lawyer Nonsense</p>
@@ -337,6 +361,8 @@
 
 	
 <script type="text/javascript">
+    
+    
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
