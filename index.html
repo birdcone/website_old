@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -9,12 +9,15 @@
 <!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+
+    <!--
 	<script type="text/javascript" src="js/buy-controller-ck.js"></script>
     <script type="text/javascript" src="js/a.js"></script>
 
 	<script type="text/javascript">
 		Stripe.setPublishableKey('pk_QfM9YS3EKrJzbgqSlMhBq92PETf9c'); 	 // LIVE
 	</script>
+    -->
 
 	<script type="text/javascript" src="js/script.js"></script>
     
@@ -25,29 +28,20 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
         
         
-        <!--[if lt IE 9]>
-        <link rel="stylesheet" type="text/css" href="css/ie.css"/>
-        <script type="text/javascript" src="js/PIE.js"></script>
-        <script type="text/javascript" src="js/script_ie.js"></script>
-        <![endif]-->
-        
-        
-        
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/ie.css"/>
+    <script type="text/javascript" src="js/PIE.js"></script>
+    <script type="text/javascript" src="js/script_ie.js"></script>
+    <![endif]-->
+                        
     <script type="text/javascript">
                 
         $(document).ready(function(){
-                          
-                          alert('x');
-                          
             $('#cc-full-name').change(function () {
                 $('#ship-full-name').val($(this).val());
             });
-        });
-        
+        });        
     </script>
-        
-        
-    
         
 </head>
 
@@ -65,7 +59,7 @@
                                         <a>MENU</a>
                                     </div>
                                     <ul>
-                                        <li><a href="index.htm" class="active">Buy a Birdcone</a></li>
+                                        <li><a href="index.htm" class="active">Buy a BirdCone</a></li>
                                         <li><a href="faq.htm">FAQ</a></li>
                                     </ul>
                                 </div>
@@ -143,7 +137,15 @@
                                                 <li><input class="text" id="cc-full-name" name="Your Name" spellcheck="false"></li>
                                             </ul>
 
-                                            
+                                            <ul class="form-ul">
+                                                <li class="flabel">&nbsp;</li>
+                                                <li>
+                                                    <a onclick="window.open('https://stripe.com/help/security', '_blank');" href="#">
+                                                        <img id="poweredby" src="img/stripe_small.png" alt="stripe secure processing" style="border: 0px;">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                           
                                             <ul class="form-ul" id="card-select">
                                              
                                             <li class="flabel">Credit card</li>
@@ -159,7 +161,9 @@
                                                 <li class="flabel">Card number</li>
                                                 <li><input class="text" id="card-number" autocomplete="off"></li>
                                             </ul>
-                                            
+
+                                         
+
                                             <ul class="form-ul last" id="expiration-select">
                                                 <li class="flabel">Expiration date</li>
                                                 <li><select id="expiration-month">
@@ -266,19 +270,19 @@
 											</select>
 										</ul>
 
+										
+
 										<ul class="form-ul">
-										<li class="flabel">Zip</li>
-										<li><input class="text" id="zip" name="zip" spellcheck="false"></li>
+										    <li class="flabel">Zip</li>
+										    <li><input class="text" id="zip" name="zip" spellcheck="false"></li>
 										</ul>
 											
 										<ul class="form-ul last">
-										<li class="flabel">Email address</li>
-										<li><input class="text" id="email" name="email" spellcheck="false"></li>
+										    <li class="flabel">Email address (optional)</li>
+										    <li><input class="text" id="email" name="email" spellcheck="false"></li>
 										</ul>
-										
-										
-										
-										<p class="label">Lawyer Nonsense</p>
+
+										<p class="label">Order Confirmation</p>
 										<p>By checking the box below, I acknowledge that BirdCone is sold
 										"as is" with no warranty of any kind. I waive all rights to hold the makers of Birdcone 
 										liable for any damages that may incur.</p>
@@ -286,9 +290,7 @@
 										
 										
 										<div class="fullClear"></div>
-										
-										<!-- 				<p id="buy-warning">Sorry, our hosting provider can't keep their mySQL servers online tonight, so we can't take any orders right now. We'll be back up as soon as we can!</p> -->
-										
+																				
 										<ul class="form-ul" id="buy-form-submit-container">
 											<li id="submit-button-li"><input class="vdkbutton green" id="buy-submit-button" value="Place This Order »" type="submit"></li>
 											<li id="spinner" class="hide"><img src="Buy_files/spinner.gif" alt="spinner" height="19" width="220"></li>
@@ -343,7 +345,7 @@
             
             <div class="footter">
             	<div class="center-footer">
-                	<p>Copyright 2013,Jahan Anirban. All rights reserved.</p>
+                	<p>Copyright (c) 2013, Birdcone. All rights reserved.</p>
                 </div>
             </div>
         </div>	<!-- end of black-box -->

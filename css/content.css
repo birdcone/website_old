@@ -1377,8 +1377,7 @@ body {
 }
 
 .birdcone-title {
-  float: center;
-  margin: 20px 0px 10px 102px;
+  margin: 0px 50px 10px 102px;
 }
 
 #birdcone-img {
@@ -1532,6 +1531,19 @@ body {
   line-height:!important;
   width:135px;
 }
+
+#poweredby
+{
+}
+
+
+.form-img-ul {
+  list-style: none;
+  float: left;
+  vertical-align: middle;
+  margin: 0px 0px 0px 0px;
+}
+
 .form-ul {
   list-style: none;
   float: left;
