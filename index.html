@@ -9,6 +9,7 @@
 <!--	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
     
     <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.numeric.js"></script>
 
     <!--
 	<script type="text/javascript" src="js/buy-controller-ck.js"></script>
@@ -35,11 +36,22 @@
     <![endif]-->
                         
     <script type="text/javascript">
-                
+        
+        
         $(document).ready(function(){
+                          
             $('#cc-full-name').change(function () {
                 $('#ship-full-name').val($(this).val());
             });
+                          
+            $('#qty').change(function () {
+                             
+                var tot = $(this).val() * 6.95;
+                $('#total').val('$' + tot.toFixed(2));
+            });
+                                      
+            $(".integer").numeric(false, function() {  this.value = ""; this.focus(); });
+
         });        
     </script>
         
@@ -111,17 +123,21 @@
                                             <p class="label">Order Information</p>
                                             <p>This info is encrypted and sent directly to <a href="http://stripe.com/" target="_blank">Stripe's</a> servers to bill your card. I do not store it or even read it on my own server.</p>
 
-                                            
-                                            <ul class="form-ul leveling">
-                                                <li class="flabel">Price</li>
-                                                <li id="price-li">
-                                                    <input class="radio" name="price" value="28" checked="checked" type="radio"> $28
-                                                        <input class="radio" name="price" value="30" type="radio"> $30
-                                                            <input class="radio" name="price" value="34" type="radio"> $34
-                                                                <input class="radio" name="price" value="36" type="radio"> $36
-                                                                    </li>
+                                            <ul class="form-ul">
+                                                <li class="flabel">Quantity</li>
+                                                <li><input class="text input-mini integer" id="qty" name="qty" value="1" ></li>
                                             </ul>
                                             
+                                            <ul class="form-ul">
+                                                <li class="flabel">&nbsp;</li>
+                                                <li><p>@ $6.95</p></li>
+                                            </ul>
+                                            
+                                            <ul class="form-ul">
+                                                <li class="flabel">Total</li>
+                                                <li><input class="text input-mini" id="total" name="total" value="$6.95" disabled></li>
+                                            </ul>
+                                                                                      
                                             <div class="fullClear"></div>
                                             <div id="price-explanation">
                                                 <!-- <canvas id="triangle-canvas" class="hidde" width="70" height="110"></canvas> -->
@@ -292,8 +308,11 @@
 										<div class="fullClear"></div>
 																				
 										<ul class="form-ul" id="buy-form-submit-container">
-											<li id="submit-button-li"><input class="vdkbutton green" id="buy-submit-button" value="Place This Order »" type="submit"></li>
-											<li id="spinner" class="hide"><img src="Buy_files/spinner.gif" alt="spinner" height="19" width="220"></li>
+											<li id="submit-button-li">
+                                                                                            
+                                                <input class="btn btn-success btn-disabled" id="buy-submit-button" value="Coming Soon »" type="submit"></li>
+                                            
+                                                <li id="spinner" class="hide"><img src="Buy_files/spinner.gif" alt="spinner" height="19" width="220"></li>
 										</ul>
 										
 										<div class="fullClear"></div>
